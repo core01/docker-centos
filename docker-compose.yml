@@ -1,0 +1,16 @@
+version: '2'
+services:
+  web:
+    build: .
+    ports:
+     - "80:80"
+     - "443:443"
+    volumes:
+     - /home/core01/dev/:/home/core01/
+     - ./nginx/:/etc/nginx/conf.d/
+     - ./php/:/etc/php-fpm.d/
+     - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    privileged: true
+    extra_hosts:
+     - "aktas.dev:127.0.0.1"
+
