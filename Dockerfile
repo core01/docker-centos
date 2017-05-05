@@ -25,5 +25,6 @@ RUN \
 
 RUN useradd -u 1000 core01
 
-CMD ["/usr/sbin/init"]
+USER core01
 
+CMD ["/bin/bash"]
