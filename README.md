@@ -13,7 +13,4 @@ How to use
 
 TIPS
 -
-If you want enter bash at root, you must use `docker exec --user root -it **CONTAINER_ID** bash`
-
-To add your own user, change **useradd** in Dockerfile (use `id` command on host system to get id & gid of your current user)
-
+If you want to enter bash as user, you must use `docker exec --user core01 -it **CONTAINER_ID** bash` (replace core01 with your username and don't forget to change **useradd** in Dockerfile (use `id` command on host system to get id & gid of your current user)
