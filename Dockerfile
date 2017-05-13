@@ -2,7 +2,7 @@ FROM centos:latest
 
 MAINTAINER Roman Sadoyan <ra@sadoyan.ru>
 
-ENV container docker
+RUN useradd -u 1000 core01
 
 RUN (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == systemd-tmpfiles-setup.service ] || rm -f $i; done); \
 rm -f /lib/systemd/system/multi-user.target.wants/*;\
@@ -23,8 +23,6 @@ RUN \
 	php-mysql php-mysqlnd nginx nginx vim wget bash-completion composer && \
 	yum upgrade -y && systemctl enable php-fpm nginx
 
-RUN useradd -u 1000 core01
+RUN cp /root/.bashrc /home/core01/ && chown core01: /home/core01/.bashrc
 
-USER core01
-
-CMD ["/bin/bash"]
+CMD /usr/sbin/init

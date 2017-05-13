@@ -1,7 +1,9 @@
 version: '2'
 services:
   web:
+    image: core01/centos
     build: .
+    tty: true
     ports:
      - "80:80"
      - "443:443"
